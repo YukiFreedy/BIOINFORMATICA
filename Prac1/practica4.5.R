@@ -87,3 +87,23 @@ x <- c(month.name[1:4], month.name[3:7])
 # cuando x[vector de bools] devuelve los componentes donde el bool es true
 x[duplicated(x)]
 unique(x)
+# FACTOR CREA UNA AGRUPACACION DE VALORES, LEVELS INCLUYE LOS DIFERENTES COMPONENTES
+diagnostico <- factor(c("glioblastoma", "glioblastoma", "metastasis", "metastasis", "glioblastoma", "meningioma", "meningioma"))
+diagnostico
+# CREAR UNA TABLA DE UN FACTOR TE DA LA CANTIDAD DE CADA COMPONENTE EN FORMA DE TABLA
+diagnosticofr <- table(diagnostico)
+diagnosticofr
+expresion <- c(10.5, 11.4, 5.2, 3.2, 9.3, 1.2, 4.2)
+# EXPRESION <- VALORES / DIAGONISTICO <- FACTOR / MEAN <- MEDIA
+tapply(expresion, diagnostico, mean)
+# byrow ESPECIFICA SI LA CUENTA VA DE ARRIBA A ABAJO O DE IZQUIERDA A DERECHA
+x <- matrix(1:30, 3, 10, byrow = T)
+x <- matrix(1:30, 10, 3, byrow = F)
+# DE LA COLUMNA 3, LOS 5 PRIMEROS VALORES
+x[c(1:5), 3]
+mean(x[c(1:5), 3])
+x[9, 2] <- 50
+# DIMENSIONES DE x
+dim(x)
+# CAMBIA LAS DIMENSIONES DE LA TABLA GENERANDO DOS TABLAS
+dim(x) <- c(3, 5, 2)
