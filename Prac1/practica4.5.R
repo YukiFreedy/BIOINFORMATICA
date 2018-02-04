@@ -107,3 +107,47 @@ x[9, 2] <- 50
 dim(x)
 # CAMBIA LAS DIMENSIONES DE LA TABLA GENERANDO DOS TABLAS
 dim(x) <- c(3, 5, 2)
+expresion <- c(10.5, 11.4, 5.2, 3.2, 9.3, 1.2, 4.2)
+diagnostico <- factor(c("glioblastoma", "glioblastoma", "metastasis", "metastasis", "glioblastoma", "meningioma", "meningioma"))
+# LO MISMO QUE FACTOR PERO AHORA EXISTEN VALORES PARA CADA UNO DE LOS COMPONENTES
+corpus <- list(variable = expresion, clase = diagnostico)
+# MOSTRAR SOLO LAS VARIABLES DE LA LISTA
+corpus$variable
+# LO MISMO DE ANTES, CON [[2]] MONSTRARIA LAS CLASES
+corpus[[1]]
+# IGUAL QUE corpus[[2]]
+corpus$clase
+# DE LAS CLASES, EL PRIMERO
+corpus[[2]][1]
+# TABLA DE DATOS DE 12 FILAS Y CUATRO COLUMNAS
+frame2 <- data.frame(y1 = rnorm(12), y2 = rnorm(12), y3 = rnorm(12), y4 = rnorm(12))
+# ASIGNACION DE NOMBRES A LAS FILAS
+rownames(frame2) <- month.name[1:12]
+# ASIGNACION DE NOMBRES A LAS COLUMNAS
+names(frame2) <- c("y4", "y3", "y2", "y1")
+dim(frame2)
+# TABLA CON TODAS LAS FILAS PERO SOLO LAS COLUMNAS DE LA 2 A LA 4
+data.frame(frame2[, 2:4])
+# TABLA CON DOS COLUMNAS Y 5 FILAS
+frame2[1:5, 1:2]
+# SOLO LAS FILAS DE NOMBRE August
+frame2["August", ]
+# DATOS POR COLUMNAS DE LA TABLA AKA. MIN, QUA, MEAN, MEDIAN...
+summary(frame2)
+# MEDIA POR COLUMNAS
+mean(frame2)
+# CALCULA LA TABLA DE COORRELACIONES ENTRE LAS DISTINTAS COLUMNAS
+cor(frame2)
+x <- 1:10
+x <- x[1:12]
+frame3 <- data.frame(x, y = 12:1)
+# LISTA DE BOOLEANS DONDE HAYA NA (NULL) EN X
+is.na(x)
+# LOS NA NO CUENTAN PARA EL COMPUTO
+sapply(frame3, mean, na.rm = T)
+apply(frame3, 1, mean, na.rm = T)
+# CAMBIA LOS NA POR 0 EN LA PRIMERA COLUMNA
+frame3[is.na(frame3), 1] <- 0
+apply(frame3, 1, mean, na.rm = T)
+
+
