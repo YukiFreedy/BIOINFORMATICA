@@ -149,5 +149,53 @@ apply(frame3, 1, mean, na.rm = T)
 # CAMBIA LOS NA POR 0 EN LA PRIMERA COLUMNA
 frame3[is.na(frame3), 1] <- 0
 apply(frame3, 1, mean, na.rm = T)
+# CREACION DE UNA FUNCION BASICA
+funcionEjemplo <- function(argumento1, argumento2, argumento3 = 100.5){
+	media <- mean(c(argumento1, argumento2, argumento3))
+	mensaje <- paste("La media de: ", argumento1, ",\n\t", argumento2, "y ", argumento3, " es ", media)
+	print(mensaje)
+	return(media)
+}
+# LLAMADA A FUNCION + ASIGNACION DEL VALOR RETURNEADO
+r <- funcionEjemplo(10, 50, 60)
+r <- funcionEjemplo(10, 50)
+r
+# COMO ls
+dir()
+# SET WORK DIRECTORY
+setwd("..")
+# GET WORK DIRECTORY
+getwd()
+setwd("45IntroduccionByBioC")
+x <- rnorm(10)
+y <- 1:10
+z <- 10:1
+plot(x, y, main = "Main title", sub = "subtitle", xlab = "x-label", ylab = "y-label")
+# col <- color lwd <- grosor pch <- forma
+plot(x, y, type = "p", col = "red", lwd = 4, pch = 3)
+# DIBUJA UNA LINEA HORIZONTAL
+abline(h = 5, col = "brown")
+# DIBUJA UNA LINEA HORIZONTAL
+abline(v = 0, col = "brown")
+# UNE LOS PUNTOS CON LINEAS lty <- discontinuedad de la linea
+lines(x, y, lty = 2)
+barplot(x)
+plot(data.frame(col1 = x, col2 = y, col3 = z))
+plot (x <- rnorm(40, 2e+07, sd = 1e+07), y <- rep(1, times = 40), type = "h", col = "blue",
+	xaxt = "n", yaxt = "n", bty = "n")
+abline(h = 0.78, col = "green", lwd = 12)
+lines(a <- rnorm(5, 2e+07, sd = 1e+07), b <- rep(1, times = 5), type = "h", col = "red", lwd = 2)
+pie(c(glio = 3, meta = 2, meni = 2, astro = 4), main = "Tumores")
+jpeg("frecuenciaTumores.jpeg")
+pie(c(glio = 3, meta = 2, meni = 2, astro = 4), main = "Tumores")
+dev.off()
 
-
+library(annotate)
+library(geneplotter)
+library("hgu95av2.db")
+newChrom <- buildChromLocation("hgu95av2.db")
+cPlot(newChrom)
+data(sample.ExpressionSet)
+cColor(featureNames(sample.ExpressionSet), "red", newChrom)
+cPlot(newChrom, c("2"), fg = "yellow", scale = "relative")
+cColor(featureNames(sample.ExpressionSet), "red", newChrom)
